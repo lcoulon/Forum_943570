@@ -1,0 +1,40 @@
+make -f nbproject/Makefile-default.mk SUBPROJECTS= .build-conf
+make[1]: Entering directory 'C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X'
+make  -f nbproject/Makefile-default.mk dist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.elf
+make[2]: Entering directory 'C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X'
+"C:\PIC_dev\MPLABXC\xc8\v1.38\bin\xc8.exe" --pass1  --chip=18F27J13 -Q -G  -D__DEBUG=1 --debugger=none  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -P -N255 --warn=-3 --asmlist -DXPRJ_default=default  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib   --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -obuild/default/debug/main.p1  main.c 
+"C:\PIC_dev\MPLABXC\xc8\v1.38\bin\xc8.exe" --pass1  --chip=18F27J13 -Q -G  -D__DEBUG=1 --debugger=none  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -P -N255 --warn=-3 --asmlist -DXPRJ_default=default  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib   --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -obuild/default/debug/interrupts.p1  interrupts.c 
+"C:\PIC_dev\MPLABXC\xc8\v1.38\bin\xc8.exe" --pass1  --chip=18F27J13 -Q -G  -D__DEBUG=1 --debugger=none  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -P -N255 --warn=-3 --asmlist -DXPRJ_default=default  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib   --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -obuild/default/debug/extra.p1  extra.c 
+"C:\PIC_dev\MPLABXC\xc8\v1.38\bin\xc8.exe"  --chip=18F27J13 -G -mdist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.map  -D__DEBUG=1 --debugger=none  --double=24 --float=24 --emi=wordwrite --opt=default,+asm,+asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -P -N255 --warn=-3 --asmlist -DXPRJ_default=default  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib --output=-mcof,+elf:multilocs --stack=compiled:auto:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"         --memorysummary dist/default/debug/memoryfile.xml -odist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.elf  build/default/debug/main.p1 build/default/debug/extra.p1 build/default/debug/interrupts.p1     
+Microchip MPLAB XC8 C Compiler (Free Mode) V1.38
+Build date: Jun 30 2016
+Part Support Version: 1.38
+Copyright (C) 2016 Microchip Technology Inc.
+License type: Node Configuration
+
+:: warning: (1273) Omniscient Code Generation not available in Free mode
+extra.c:26: warning: (520) function "_ms_counter_TMR0" is never called
+:: warning: (1311) missing configuration setting for config word 0x1FFFB; using default
+:: warning: (1311) missing configuration setting for config word 0x1FFFD; using default
+:: warning: (1311) missing configuration setting for config word 0x1FFFE; using default
+:: warning: (1311) missing configuration setting for config word 0x1FFFF; using default
+
+Memory Summary:
+    Program space        used   4BAh (  1210) of 1FFF8h bytes   (  0.9%)
+    Data space           used    3Fh (    63) of   EB0h bytes   (  1.7%)
+    Configuration bits   used     4h (     4) of     4h words   (100.0%)
+    Data stack space     used     0h (     0) of   E50h bytes   (  0.0%)
+
+
+You have compiled in FREE mode.
+Using Omnicient Code Generation that is available in PRO mode,
+you could have produced up to 60% smaller and 400% faster code.
+See http://www.microchip.com/MPLABXCcompilers for more information.
+
+make[2]: Leaving directory 'C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X'
+make[1]: Leaving directory 'C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X'
+
+BUILD SUCCESSFUL (total time: 5s)
+Loading symbols from C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X/dist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.elf...
+Loading code from C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X/dist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.elf...
+Loading completed
