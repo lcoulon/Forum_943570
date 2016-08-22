@@ -155,11 +155,6 @@ void main(void)
     INTCON3bits.INT2IE = 1;             // enable interrupt
     INTCON3bits.INT2IF = 0;             // Clears INT1 External Interrupt Flag bit
        
-    // Enable PIC interrupts
-    RCONbits.IPEN = 1;                  // Enable priority levels on interrupts. (IPEN: Interrupt Priority Enable bit)
-    INTCONbits.GIEH = 1;                // Enable all high priority interrupts.
-    INTCONbits.PEIE_GIEL = 1;           // Enable all low priority interrupts.
-    
     // Set interrupts levels priorities
     INTCON2bits.TMR0IP = 0;             // TMR0 Overflow Interrupt is Low Priority
     // There   is   no   priority   bit associated  with  INT0;  It  is  always  a  high-priority interrupt source
@@ -212,14 +207,7 @@ void main(void)
     PIR1bits.RCIF = 0;      // Clear the UART RX interrupt flag
      
     #endif  // (USE_UART)
-
    
-    
-    // If battery voltage gets low, MCP1257 will turn RC2 to Ground
-    if (LOW_BAT == 0) LED = 1;
-    else LED = 0;
-      
-    
     // If we use SLEEP mode, we need to enable interrupts in order to wake-up the PIC from INT0 and INT1
     
     // the wake-up program execution point is dependent on the state of the GIE bit(s):
@@ -227,8 +215,16 @@ void main(void)
     
     INTCONbits.INT0IE = 1;       
     INTCON3bits.INT1IE = 1;
-    INTCONbits.GIEH = 1;
     
+    // Enable PIC interrupts
+    RCONbits.IPEN = 1;                  // Enable priority levels on interrupts. (IPEN: Interrupt Priority Enable bit)
+    INTCONbits.GIEL = 1;                // Enable all low priority interrupts.
+    INTCONbits.GIEH = 1;                // Enable all high priority interrupts.
+    
+    // If battery voltage gets low, MCP1257 will turn RC2 to Ground
+    if (LOW_BAT == 0) LED = 1;
+    else LED = 0;
+      
     // If we use Deep Sleep, release deep sleep freeze of GPIO pins
     DSCONLbits.RELEASE = 0; // Clearing this bit will release the I/O pins and allow their respective TRIS and LAT bits to control their states
 
