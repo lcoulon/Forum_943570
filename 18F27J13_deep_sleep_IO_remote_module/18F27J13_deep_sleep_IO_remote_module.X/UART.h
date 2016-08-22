@@ -21,35 +21,35 @@
 // of USART/EUSART/etc.
 
 
-        #define BusyUART()		BusyUSART()
-        #define CloseUART()		CloseUSART()
-        #define ConfigIntUART(a)	ConfigIntUSART(a)
-        #define DataRdyUART()		DataRdyUSART()
-        #define OpenUART(a,b,c)		OpenUSART(a,b,c)
-        #define ReadUART()		ReadUSART()
-        #define WriteUART(a)		WriteUSART(a)
-        #define getsUART(a,b,c)		getsUSART(b,a)
-        #define putsUART(a)		putsUSART(a)
-        #define getcUART()		ReadUSART()
-        #define putcUART(a)		WriteUSART(a)
+        #define BusyUART()      BusyUSART()
+        #define CloseUART()     CloseUSART()
+        #define ConfigIntUART(a)    ConfigIntUSART(a)
+        #define DataRdyUART()       DataRdyUSART()
+        #define OpenUART(a,b,c)     OpenUSART(a,b,c)
+        #define ReadUART()      ReadUSART()
+        #define WriteUART(a)        WriteUSART(a)
+        #define getsUART(a,b,c)     getsUSART(b,a)
+        #define putsUART(a)     putsUSART(a)
+        #define getcUART()      ReadUSART()
+        #define putcUART(a)     WriteUSART(a)
 
         #if defined(__18CXX)
-        #define putrsUART(a)		putrsUSART((far rom char*)a)    // for C18 compiler
+        #define putrsUART(a)        putrsUSART((far rom char*)a)    // for C18 compiler
         #endif
 
         #if defined(__XC8)
-        #define putrsUART(a)		putrsUSART((const char*)a)      // for XC8 compiler
+        #define putrsUART(a)        putrsUSART((const char*)a)      // for XC8 compiler
         #endif
 
-	char BusyUSART(void);
-	void CloseUSART(void);
-	char DataRdyUSART(void);
-	char ReadUSART(void);
-	void WriteUSART(char data);
-	void getsUSART(char *buffer, unsigned char len);
-	void putsUSART(char *data);
+    char BusyUSART(void);
+    void CloseUSART(void);
+    char DataRdyUSART(void);
+    char ReadUSART(void);
+    void WriteUSART(char data);
+    void getsUSART(char *buffer, unsigned char len);
+    void putsUSART(char *data);
         #if defined(__18CXX)
-	void putrsUSART(const rom char *data);                          // for C18 compiler
+    void putrsUSART(const rom char *data);                          // for C18 compiler
         #endif
 
         #if defined(__XC8)

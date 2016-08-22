@@ -3,8 +3,8 @@
  *     Extra Functions
  *
  *********************************************************************
- *		Delays functions from Timer 0
- *		LED flashes
+ *      Delays functions from Timer 0
+ *      LED flashes
 *********************************************************************/
 #define __EXTRA_C
 
@@ -56,20 +56,20 @@ void seconds_counter_TMR0(void)
 
     if (INTCONbits.TMR0IF)
     {
-    T0CONbits.TMR0ON = 1;          
-    T0CONbits.T08BIT = 0;           
-    T0CONbits.T0CS   = 0;           
-    T0CONbits.PSA    = 0;    
-        
+    T0CONbits.TMR0ON = 1;
+    T0CONbits.T08BIT = 0;
+    T0CONbits.T0CS   = 0;
+    T0CONbits.PSA    = 0;
+
     T0CONbits.T0PS2  = 1;       // bits 2-0  PS2:PS0: Prescaler Select bits
     T0CONbits.T0PS1  = 0;
     T0CONbits.T0PS0  = 1;
-    
+
     TMR0H = 0x0B;    // preset for Timer0 MSB register
     TMR0L = 0xDC;    // preset for Timer0 LSB register
 
     INTCONbits.TMR0IF = 0;      // repositionne le flag a 0 pour un nouveau comptage
-    
+
     seconds_TMR0 ++;             // Comptage des impulsions (tte les secondes) depuis la mise en route du timer
     if(seconds_TMR0 == 4294967294u) seconds_TMR0 = 0ul;
     }
@@ -85,7 +85,7 @@ unsigned short int i = 0;
 MODE_LED = 0;
 
     while (flash_counter < flashes)
-    {  
+    {
     MODE_LED ^= 1;                  // Toggle LED state
     for (i=0;i<5;i++) __delay_ms(10);     // 50 ms delay
     MODE_LED ^= 1;                  // Toggle LED state
@@ -101,7 +101,7 @@ void Flashes_BLUE_LED_xtimes(unsigned short int flashes)
 MODE_LED = 0; // Initial state of the LED.
 
     while(flashes--)
-    {  
+    {
     SYSTEM_BLUE_LED ^= 1;                          // Toggle LED state
     for (int i=0;i<5;i++) __delay_ms(10);   // 50 ms delay
     SYSTEM_BLUE_LED ^= 1;                          // Toggle LED state
@@ -112,7 +112,7 @@ MODE_LED = 0; // Initial state of the LED.
 
 
 eWakeReason check_reset(void)
-{   
+{
     register eWakeReason Result;
 
     /*
@@ -151,4 +151,4 @@ eWakeReason check_reset(void)
     }
 
     return Result;
-}    
+}

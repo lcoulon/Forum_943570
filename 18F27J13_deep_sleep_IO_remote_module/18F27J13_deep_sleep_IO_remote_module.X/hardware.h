@@ -31,7 +31,7 @@
  */
 
 #ifndef HARDWARE_H
-#define	HARDWARE_H
+#define HARDWARE_H
 
 #include <stdlib.h>             // Needed for itoa and atoi functions
 #include <xc.h>                 // Header file needed if project is compiled with XC8 compiler
@@ -57,28 +57,28 @@
 //#include "UART.h"                 // use local uart.c & uart.h
 #include <usart.h>                  // plib Library file
 // Variables
-#define UART_buffer_SIZE	80      // nombre de caractères maxi que peut stocker le buffer UART
+#define UART_buffer_SIZE    80      // nombre de caractères maxi que peut stocker le buffer UART
 #endif
 //****************************************************************************
 
 
 /****** PORT DEFINITIONS ******/
-#define LED                     LATAbits.LATA6		// * RED LED
+#define LED                     LATAbits.LATA6      // * RED LED
 #define LED_TRIS                TRISAbits.TRISA6
 
-#define SYSTEM_BLUE_LED         LATAbits.LATA7 		// * SYSTEM LED
+#define SYSTEM_BLUE_LED         LATAbits.LATA7      // * SYSTEM LED
 #define SYSTEM_BLUE_LED_TRIS    TRISAbits.TRISA7 
 
-#define MODE_LED                LATBbits.LATB3 		// * MODE LED
+#define MODE_LED                LATBbits.LATB3      // * MODE LED
 #define MODE_LED_TRIS           TRISBbits.TRISB3 
 
-#define SLEEP_DC                LATCbits.LATC0 		// * SLEEP DC
+#define SLEEP_DC                LATCbits.LATC0      // * SLEEP DC
 #define SLEEP_DC_TRIS           TRISCbits.TRISC0
 
 #define RELAY                   LATCbits.LATC1      // * RELAY
 #define RELAY_TRIS              TRISCbits.TRISC1   
 
-#define BUZZER                  LATBbits.LATB2 		// * BUZZER
+#define BUZZER                  LATBbits.LATB2      // * BUZZER
 #define BUZZER_TRIS             TRISBbits.TRISB2 
 
 // SET Push button
@@ -133,5 +133,5 @@
 
 
 
-#endif	// HARDWARE_H
+#endif  // HARDWARE_H
 

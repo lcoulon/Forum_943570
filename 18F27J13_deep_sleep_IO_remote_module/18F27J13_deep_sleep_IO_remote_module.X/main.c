@@ -108,7 +108,7 @@ void main(void)
     RELAY_TRIS = 0;    
     BUZZER_TRIS = 0;  
     SYSTEM_BLUE_LED_TRIS = 0;
-	LED_TRIS = 0;	
+    LED_TRIS = 0;   
     MODE_LED_TRIS = 0;
     SLEEP_DC_TRIS = 0;
     RFM_SHUTDOWN_TRIS = 0;   // RFM22 shutdown pin is output
@@ -174,44 +174,44 @@ void main(void)
     PIE2bits.TMR3IE = 0;                // Disable TMR3 overflow interrupt.
     INTCONbits.RBIE = 0;                // Disable the RB port change interrupt
     
-	# if defined(USE_UART)
-	// See datasheet page 215
+    # if defined(USE_UART)
+    // See datasheet page 215
 
-	// Initialise the serial port
-	TRISCbits.TRISC7 = 1;               // RC7 is input  (UART Rx pin)	
-	TRISCbits.TRISC6 = 0;               // RC6 is output (UART Tx pin)
+    // Initialise the serial port
+    TRISCbits.TRISC7 = 1;               // RC7 is input  (UART Rx pin)  
+    TRISCbits.TRISC6 = 0;               // RC6 is output (UART Tx pin)
 
-	BAUDCONbits.BRG16 = 0;
-	SPBRG  = 25;                        // 9600 Bauds
-	SPBRGH = 0;
+    BAUDCONbits.BRG16 = 0;
+    SPBRG  = 25;                        // 9600 Bauds
+    SPBRGH = 0;
 
-	// Set Transmit function
-	TXSTA =	0b10100000;   // 0xA0
-	// TXSTA : CSRC TX9 TXEN SYNC SENDB BRGH TRMT TX9D
-		// 7   Async mode
-		// 6   8 bit selection
-		// 5   Enable TX
-		// 4   SYNC : Async mode
-		// 3   not implemented
-		// 2   BRGH = 0
-		// 1   don't care	
-		// 0   don't care
+    // Set Transmit function
+    TXSTA = 0b10100000;   // 0xA0
+    // TXSTA : CSRC TX9 TXEN SYNC SENDB BRGH TRMT TX9D
+        // 7   Async mode
+        // 6   8 bit selection
+        // 5   Enable TX
+        // 4   SYNC : Async mode
+        // 3   not implemented
+        // 2   BRGH = 0
+        // 1   don't care   
+        // 0   don't care
 
-	// Set Receive function
-	RCSTA = 0b10110000;	//0xB0
-	// RCSTA SPEN RX9 SREN CREN ADDEN FERR OERR RX9D
-		// 7   SPEN - Serial Port Enable
-		// 6   8 bit selection
-		// 5   Asynchronous mode: Don't care
-		// 4   CREN - Enable continuous receive
-		// 3   disable address detection
-		// 2-0 don't care
+    // Set Receive function
+    RCSTA = 0b10110000; //0xB0
+    // RCSTA SPEN RX9 SREN CREN ADDEN FERR OERR RX9D
+        // 7   SPEN - Serial Port Enable
+        // 6   8 bit selection
+        // 5   Asynchronous mode: Don't care
+        // 4   CREN - Enable continuous receive
+        // 3   disable address detection
+        // 2-0 don't care
 
- 	IPR1bits.RCIP = 0;      // EUSART Receive Interrupt has low interrupt priority.
-	PIE1bits.RCIE = 0;		// Disable USART Receive interrupt
-	PIR1bits.RCIF = 0;		// Clear the UART RX interrupt flag
+    IPR1bits.RCIP = 0;      // EUSART Receive Interrupt has low interrupt priority.
+    PIE1bits.RCIE = 0;      // Disable USART Receive interrupt
+    PIR1bits.RCIF = 0;      // Clear the UART RX interrupt flag
      
-	#endif	// (USE_UART)
+    #endif  // (USE_UART)
 
    
     
