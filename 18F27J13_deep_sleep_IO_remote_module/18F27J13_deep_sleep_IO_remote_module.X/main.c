@@ -15,20 +15,14 @@
 #include <stdint.h>
 
 
-// PIC 18F26J13 uses internal oscillator @ 16 Mhz
-#pragma config WDTEN = OFF      // Watchdog Timer (Disabled - Controlled by SWDTEN bit)
-#pragma config CFGPLLEN = ON    // PLL Enable Configuration Bit (PLL Enabled)
-#pragma config XINST = OFF      // Extended Instruction
-#pragma config CP0 = OFF        // Code Protect (Program memory is not code-protected)
-#pragma config OSC = INTOSCPLL  // Oscillator (INTOSCPLL)
-
-// http://www.microchip.com/forums/m943570.aspx
-// Datasheet page 56 - 57
-#pragma config DSWDTOSC = INTOSCREF     // DSWDT Clock Select (DSWDT uses INTRC)
-#pragma config RTCOSC = T1OSCREF        // RTCC Clock Select (RTCC uses T1OSC/T1CKI)
-#pragma config DSBOREN = OFF            // Disabled
-#pragma config DSWDTEN = ON             // Deep Sleep Watchdog Timer (Enabled)
-#pragma config DSWDTPS = 2048           // Deep Sleep Watchdog Postscaler 2.1s
+// PIC 18F26J13 uses internal oscillator @ 4 Mhz with 4X PLL for 16MHz sys clock
+#pragma config WDTEN = OFF, PLLDIV = 2, CFGPLLEN = OFF, STVREN = ON
+#pragma config XINST = OFF, CP0 = OFF, OSC = INTOSC, SOSCSEL = DIG
+#pragma config CLKOEC = OFF, FCMEN = OFF, IESO = ON, WDTPS = 1024
+#pragma config DSWDTOSC = INTOSCREF, RTCOSC = INTOSCREF, DSBOREN = OFF
+#pragma config DSWDTEN = ON, DSWDTPS = 2048, IOL1WAY = OFF, ADCSEL = BIT12
+#pragma config PLLSEL = PLL4X, MSSP7B_EN = MSK7, WPFP = PAGE_127
+#pragma config WPCFG = OFF, WPDIS = OFF, WPEND = PAGE_WPFP
 
 
 /*******************************************************/
@@ -73,6 +67,9 @@ extern BOOL SEND_DOOR_REPORT;
 
 void main(void)
 {        
+    OSCCON = 0b01100000;    /* Set internal oscillator to 4MHz wit PLL4X as defined in config words */
+    OSCTUNEbits.PLLEN = 1;  /* Turn on PLL for a 16MHz system oscillator */
+
     for (int i=0; i<300; i++) __delay_ms(10);       // Wait for voltages to stabilize at start-up
        
     ADCON0 = (0b00000000);   // ADON=0, Channel 0, Disable AD converter

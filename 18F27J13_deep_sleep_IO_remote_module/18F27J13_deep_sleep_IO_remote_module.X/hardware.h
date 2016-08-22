@@ -1,5 +1,33 @@
 /* 
  * File:   hardware.h
+ * 
+ * 
+ *                                 PIC18F27J13 
+ *                   +-----------------:_:-----------------+
+ *      ISCP_VPP --> :  1 MCLRn            PGD/RP10/RB7 28 : <*> ISCP_PGD
+ *        TX-ANT - > :  2 RA0/RP0          PGC/ RP9/RB6 27 : <*> ISCP_PGC
+ *        RX-ANT - > :  3 RA1/RP1               RP8/RB5 26 : <*- ILS
+ *  RFM_SHUTDOWN < - :  4 RA2/AN2               RP7/RB4 25 : <*- INPUT_1
+ *   RFM_SPI_CSn < - :  5 RA3/AN3               RP6/RB3 24 : - > LED_GREEN_MODE
+ *          10uF --> :  6 VCAP            REFO/ RP5/RB2 23 : - > BUZZER
+ *           SET - > :  7 RA5/RP2               RP4/RB1 22 : < - INPUT_2
+ *           GND --> :  8 VSS             INT0/ RP3/RB0 21 : < - RFM_IRQn
+ *       LED_RED < - :  9 RA7/OSC1                  VDD 20 : <-- PWR
+ *  LED_BLUE_SYS < - : 10 RA6/OSC2                  VSS 19 : <-- GND
+ *        SLEEPn < - : 11 RC0/RP11/T1OSO  RXD1/RP18/RC7 18 : <*- RXD
+ *         RELAY < - : 12 RC1/RP12/T1OSI  TXD1/RP17/RC6 17 : -*> TXD
+ *       LOW_BAT - > : 13 RC2/RP13             RP16/RC5 16 : -*> RFM_SPI_MISO
+ *   RFM_SPI_CLK <*- : 14 RC3/RP14             RP15/RC4 15 : <*- RFM_SPI_MISO
+ *                   +-------------------------------------+
+ *                                   DIP-28
+ * 
+ *               -->      Fix direction, always input        <--
+ *               - >         Program slected, input          < -
+ *               < -        Program slected,  output         - >
+ *               < >             Bi-directional              < >
+ *               -*>   Program slected, input, 5V tolerant   <*-
+ *               <*-  Program slected, output, 5V tolerant   -*>
+ *               <*>       Bi-directional, 5V tolerant       <*>
  */
 
 #ifndef HARDWARE_H

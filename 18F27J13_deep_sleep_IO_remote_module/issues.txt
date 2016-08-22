@@ -1,3 +1,8 @@
+Issue 2016-08-21.1: "missing configuration setting"
+
+This is the output from the first build on 2016-08-21:
+======================================================
+
 make -f nbproject/Makefile-default.mk SUBPROJECTS= .build-conf
 make[1]: Entering directory 'C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X'
 make  -f nbproject/Makefile-default.mk dist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.elf
@@ -38,3 +43,25 @@ BUILD SUCCESSFUL (total time: 5s)
 Loading symbols from C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X/dist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.elf...
 Loading code from C:/Public/PIC/18F/18F27J13/lcoulon/18F27J13_deep_sleep_IO_remote_module/18F27J13_deep_sleep_IO_remote_module.X/dist/default/debug/18F27J13_deep_sleep_IO_remote_module.X.debug.elf...
 Loading completed
+
+======================================================
+2016-08-21 16:54 (UTC -8:00)
+======================================================
+The XC8 compiler/linker is warning that the definitions for some of the 
+configuration words are missing. All of the bits in all of the configuration 
+words should be defined every time for every project. Just trusting
+that the default values are fine is just being lazy.
+
+In fact for any PIC the developer should know the reason for the setting of 
+each and every bit in every configuration word. The only exceptions for this 
+are the bits that the IDE controls when building for In Circuit Debug (ICD).
+
+Many of the PIC controllers have restrictions on what configurations are 
+supported for ICD. For a lot of PICs Watch Dog Timeouts and Sleep modes 
+cannot be debugged with the ICD.
+
+To fix this we will expand the #pragma config statements in the main.c file.
+
+Expanded documentation in the harsware.h file.
+
+======================================================
