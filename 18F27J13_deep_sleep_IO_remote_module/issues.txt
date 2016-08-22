@@ -65,3 +65,7 @@ To fix this we will expand the #pragma config statements in the main.c file.
 Expanded documentation in the harsware.h file.
 
 ======================================================
+2016-08-21 19:22 (UTC -8:00)
+======================================================
+Refactor function in main.c, extra.c, extra.h to try for a better implementation 
+of the deep sleep mode functionality.

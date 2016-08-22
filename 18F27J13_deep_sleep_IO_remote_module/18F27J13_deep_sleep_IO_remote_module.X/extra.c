@@ -111,46 +111,41 @@ MODE_LED = 0; // Initial state of the LED.
 
 
 
-unsigned char check_reset(void)
+eWakeReason check_reset(void)
 {   
-    register unsigned char Result;
+    register eWakeReason Result;
 
-     /* Look at flags to see what kind of start up this is */
-    
+    /*
+     * Look at flags to see what kind of start up this is
+     */
     if(WDTCONbits.DS) /* Deep sleep wake up */
     {
         if(DSWAKEHbits.DSINT0)
         {
-            Result = 1;          /* INT0 wake from deep sleep */
-            DSGPR1 = DSGPR1 + 1; /* count when wake from INT0  */
+            Result = eDSWINT0;      /* INT0 wake from deep sleep */
         }
         else if(DSWAKELbits.DSWDT)
         {
-            Result = 1;          /* Timeout wake from deep sleep */
-            DSGPR0 = DSGPR0 + 1; /* count when wake from DSWDT */
+            Result = eDSWDTO;       /* Timeout wake from deep sleep */
         }
         else if(DSWAKELbits.DSPOR)
         {
-            Result = 2;          /* MCLR wake from deep sleep */
+            Result = eDSPOR;        /* MCLR wake from deep sleep */
             RCON |= 0b00111111;
-            DSGPR0 = 0;
-            DSGPR1 = 0;
-//            LATB   = 0;
+            LATB   = 0;
         }
     }
     else              /* Other class of wake up */
     {
         if(RCONbits.NOT_PD == 0) /* Power on reset */
         {
-            Result = 0;         /* assume we are a Power On reset */
+            Result = ePOR;          /* Power On reset */
             RCON |= 0b00111111;
-            DSGPR0 = 0;
-            DSGPR1 = 0;
-//            LATB   = 0;
+            LATB   = 0;
         }
-        else if(RCONbits.NOT_TO) /* Watch Dog Timeout reset */
+        else if(RCONbits.NOT_TO)
         {
-            Result = 3;
+            Result = eWDTO;         /* Watch Dog Timeout reset */
             RCONbits.NOT_TO = 1;
         }
     }
