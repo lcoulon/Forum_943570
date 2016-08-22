@@ -69,3 +69,10 @@ Expanded documentation in the harsware.h file.
 ======================================================
 Refactor function in main.c, extra.c, extra.h to try for a better implementation 
 of the deep sleep mode functionality.
+
+
+======================================================
+2016-08-22 09:07 (UTC -8:00)
+======================================================
+Change the enabled sequence of interrupt sources.
+Enable system interrupts when it is all setup.
